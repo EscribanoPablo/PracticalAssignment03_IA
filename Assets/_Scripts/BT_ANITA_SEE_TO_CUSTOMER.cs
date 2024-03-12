@@ -43,11 +43,12 @@ public class BT_ANITA_SEE_TO_CUSTOMER : BehaviourTree
             new ACTION_AskEngaged("11","2","answer"),
             new Selector(
                 new Sequence(
-                    new ACTION_ParseAnswer( "?","??"),
-                    new ACTION_Utter("13"),
+                    new ACTION_ParseAnswer( "answer","item"),
+                    new ACTION_TellEngaged("13","2"),
                     CreateInstance<BT_SELL_PRODUCT>()
                     ),
-                new ACTION_Utter("12")),
+                new ACTION_TellEngaged("12","2")
+                ),
             new ACTION_DisengageFromDialog()
             );
 

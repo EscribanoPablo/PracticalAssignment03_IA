@@ -781,6 +781,8 @@ MonoBehaviour:
   theFrontOfDesk: {fileID: 922145086}
   safeRadius: 60
   extraSafeRadius: 30
+  lowSW: 0.2
+  highSW: 0.8
   utterances:
   - unused utterance
   - unused utterance
@@ -893,7 +895,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53860486cf18188428b968e8fecc55f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  behaviourTree: {fileID: 11400000, guid: 6ac84343208010544a299384e9b39154, type: 2}
+  behaviourTree: {fileID: 11400000, guid: a3d03de636d0e44459f8ef61905a20ea, type: 2}
   status: LIMBO
 --- !u!1 &869024204
 GameObject:

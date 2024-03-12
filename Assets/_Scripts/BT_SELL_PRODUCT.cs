@@ -43,9 +43,9 @@ public class BT_SELL_PRODUCT : BehaviourTree
             new Sequence(
                 new CONDITION_CheckExistences("item"),
                 new ACTION_Sell("item"),
-                new ACTION_Utter("14")
+                new ACTION_TellEngaged("14","2")
                 ),
-            new ACTION_Utter("12")
+            new ACTION_TellEngaged("15","2")
             );
     }
 }

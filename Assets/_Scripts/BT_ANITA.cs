@@ -40,6 +40,8 @@ public class BT_ANITA : BehaviourTree
           A behaviour tree can use other behaviour trees.  
       */
 
+
+
         DynamicSelector m_DS =new DynamicSelector();
 
         m_DS.AddChild(
@@ -58,8 +60,10 @@ public class BT_ANITA : BehaviourTree
             CreateInstance<BT_ANITA_SWEEP_AND_SING>()
             );
 
+        RepeatForeverDecorator m_RFD = new RepeatForeverDecorator();
 
+        m_RFD.AddChild(m_DS);
 
-        root = m_DS;
+        root = m_RFD;
     }
 }
