@@ -7,6 +7,13 @@ public class CONDITION_FeelUnsafe : Condition
     public string keySafeRadius;
     public string keyExtraSafeRadius;
 
+    private bool lastTick = false;
+
+
+    private GameObject attractor;
+    private float safeRadius;
+    private float extraSafeRadius;
+
     // Constructor
     public CONDITION_FeelUnsafe(string keyAttractor,
                                 string keySafeRadius,
@@ -17,8 +24,14 @@ public class CONDITION_FeelUnsafe : Condition
         this.keyExtraSafeRadius = keyExtraSafeRadius;
     }
 
-    private bool lastTick = false;
 
+    public override void OnInitialize()
+    {
+        attractor = blackboard.Get<GameObject>(keyAttractor);
+        safeRadius = blackboard.Get<float>(keySafeRadius);
+        extraSafeRadius = blackboard.Get<float>(keyExtraSafeRadius);
+        lastTick = false;
+    }
     public override bool Check()
     {
         // outside safe, return false
@@ -30,18 +43,5 @@ public class CONDITION_FeelUnsafe : Condition
             lastTick = false;
         return lastTick;
 
-    }
-
-    private GameObject attractor;
-    private float safeRadius;
-    private float extraSafeRadius;
-
-
-    public override void OnInitialize()
-    {
-        attractor = blackboard.Get<GameObject>(keyAttractor);
-        safeRadius = blackboard.Get<float>(keySafeRadius);
-        extraSafeRadius = blackboard.Get<float>(keyExtraSafeRadius);
-        lastTick = false;
     }
 }

@@ -42,12 +42,12 @@ public class BT_ANITA_CONSTRAINED_WANDER : BehaviourTree
         DynamicSelector m_DS_WanderAround = new DynamicSelector();
 
         m_DS_WanderAround.AddChild(
-            new CONDITION_FeelUnsafe("attractor", "safeRadius", "extraSafeRadius"),
-            new ACTION_WanderAround("attractor", "highSW")
+            new CONDITION_FeelUnsafe("theSweepingPoint", "safeRadius", "extraSafeRadius"),
+            new ACTION_WanderAround("theSweepingPoint", "highSW")
             );
         m_DS_WanderAround.AddChild(
             new CONDITION_AlwaysTrue(),
-            new ACTION_WanderAround("attractor", "lowSW")
+            new ACTION_WanderAround("theSweepingPoint", "lowSW")
             );
 
         root = m_DS_WanderAround;

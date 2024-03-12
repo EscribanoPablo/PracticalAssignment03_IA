@@ -41,8 +41,15 @@ public class ANITAs_BLACKBOARD : DynamicBlackboard, IDialogSystem
         "What a pity!!! None left!",
         "Waiting for a customer..." // 16
     };
-    
-   
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(theSweepingPoint.transform.position, safeRadius);
+        Gizmos.color = Color.red;
+
+        Gizmos.DrawWireSphere(theSweepingPoint.transform.position, extraSafeRadius);
+    }
     void Start()
     {
         theStoreEntrance = GameObject.Find("storeEntrance");

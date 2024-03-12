@@ -22,7 +22,6 @@ public class BT_ANITA_SEE_TO_CUSTOMER : BehaviourTree
        In future versions, BT parameters may cease to exit
 
      */
-
      // construtor
     public BT_ANITA_SEE_TO_CUSTOMER()  { 
         /* Receive BT parameters and set them. Remember all are of type string */
@@ -40,8 +39,8 @@ public class BT_ANITA_SEE_TO_CUSTOMER : BehaviourTree
           A behaviour tree can use other behaviour trees.  
       */
         Sequence AnitaSeeToCustomer = new Sequence(
-            new ACTION_EngageInDialog("partner"),
-            new ACTION_AskEngaged("11","2","rs"),
+            new ACTION_EngageInDialog("customer"),
+            new ACTION_AskEngaged("11","2","answer"),
             new Selector(
                 new Sequence(
                     new ACTION_ParseAnswer( "?","??"),

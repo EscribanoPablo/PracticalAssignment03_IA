@@ -43,7 +43,7 @@ public class BT_ANITA : BehaviourTree
         DynamicSelector m_DS =new DynamicSelector();
 
         m_DS.AddChild(
-            new CONDITION_CustomerInStore(),
+            new CONDITION_CustomerInStore("customer"),
             new Sequence(
                 new ACTION_Deactivate("theBroom"),
                 new ACTION_Deactivate("theNotes"),
