@@ -50,8 +50,8 @@ public class BT_ANITA : BehaviourTree
                 new ACTION_Deactivate("theBroom"),
                 new ACTION_Deactivate("theNotes"),
                 new ACTION_Activate("theScaredFace"),
-                new ACTION_Arrive("theFrontOfDesk"),
                 new ACTION_Utter("0"),
+                new ACTION_Arrive("theFrontOfDesk"),
                 new ACTION_Arrive("theFrontOfDesk"),
                 CreateInstance<BT_ANITA_SEE_TO_ROBBER>()
 

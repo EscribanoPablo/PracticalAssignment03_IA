@@ -24,6 +24,7 @@ public class ANITAs_BLACKBOARD : DynamicBlackboard, IDialogSystem
     private GameObject utteranceBubble;
     private TextMesh peachLine, appleLine;
     private IDialogSystem partner;
+    public bool isBeenRobbed;
 
 
     public string[] utterances =
@@ -31,7 +32,7 @@ public class ANITAs_BLACKBOARD : DynamicBlackboard, IDialogSystem
         "Oh no! A thief!", // 0
         "Don't hurt me! What do you want?!",
         "I'm giving it to you okay? Just wait a second!",  // 2
-        "I don't have what you are looking for! Leave me alone!", // 3
+        "I do not have what you are looking for! Leave me alone!", // 3
         "Here you go! Now please leave my store!",
         "unused utterance",//5
         "unused utterance",//6
@@ -91,6 +92,10 @@ public class ANITAs_BLACKBOARD : DynamicBlackboard, IDialogSystem
         if (item == "APPLE") return apples > 0;
         if (item == "PEACH") return peaches > 0;
         return false;
+    }
+    public bool CheckIfHasBeenRobbed()
+    {
+        return isBeenRobbed;
     }
 
     public bool Sell(string item)

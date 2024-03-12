@@ -8,6 +8,8 @@ TagManager:
   - FRONTDESK
   - EXIT_POINT
   - EX_CUSTOMER
+  - CUSTOMER
+  - ROBBER
   layers:
   - Default
   - TransparentFX

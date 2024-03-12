@@ -68,6 +68,7 @@ public class CUSTOMER_BLACKBOARD : DynamicBlackboard, IDialogSystem
             || sentence.ToUpper().Contains("NONE")
             || sentence.ToUpper().Contains("DO NOT")
             || sentence.ToUpper().Contains("NOT")
+            || sentence.ToUpper().Contains("ROBBED")
             || sentence.ToUpper().Contains("SOLD LAST")
             || sentence.ToUpper().Contains("DON'T"))
         {

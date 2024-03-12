@@ -81,6 +81,11 @@ public class BT_SELL_PRODUCT : BehaviourTree
                 new ACTION_Sell("item"),
                 new ACTION_TellEngaged("14", "2")
                 ),
+            new Sequence(
+                new CONDITION_CheckIfHasBeenRobbed(),
+                new ACTION_TellEngaged("6", "2")
+
+                ),
             new ACTION_TellEngaged(ChooseRandomNegativeUtteranceIndex(), "2")
             );
     }

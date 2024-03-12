@@ -20,7 +20,11 @@ public class ACTION_GiveAll : Action
 
     public override Status OnTick()
     {
-        if (bl.GiveAll(item)) return Status.SUCCEEDED;
+        if (bl.GiveAll(item)) 
+        { 
+            bl.isBeenRobbed = true;
+            return Status.SUCCEEDED; 
+        }
         else return Status.FAILED;
 
     }

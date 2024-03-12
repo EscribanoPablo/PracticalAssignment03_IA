@@ -24,7 +24,7 @@ public class BT_ROBBER : BehaviourTree
             new ACTION_Arrive("exitPoint"),
             new Selector(
                 new Sequence(
-                    new LambdaCondition(() => { return gameObject.GetComponent<CUSTOMER_BLACKBOARD>().goodMood; }),
+                    new LambdaCondition(() => { return gameObject.GetComponent<ROBBER_BLACKBOARD>().goodMood; }),
                     new ACTION_Activate("trashBag"),
                     new ACTION_Utter("5", "2"),
                     new ACTION_Utter("6", "2")

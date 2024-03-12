@@ -22,9 +22,9 @@ public class ROBBER_BLACKBOARD : DynamicBlackboard, IDialogSystem
         "I HAVE TO GO FAST", // 4
         "Now let me escape the police...",
         "...and eat this f*cking fruit!",//6
-        "SH*T! YOU DON'T HACE THAT?!",
+        "SH*T! YOU DON'T HAVE THAT?!",
         "It was a joke! Don't call the police please...",//8
-        "THIS IS A ROBEBRY!!!"
+        "THIS IS A ROBBERY!!!"
     };
 
 
@@ -64,12 +64,7 @@ public class ROBBER_BLACKBOARD : DynamicBlackboard, IDialogSystem
     public void BeTold(string sentence)
     {
         // senteces with negative words affect the mood of the agent...
-        if (sentence.ToUpper().Contains("NO")
-            || sentence.ToUpper().Contains("NONE")
-            || sentence.ToUpper().Contains("DO NOT")
-            || sentence.ToUpper().Contains("NOT")
-            || sentence.ToUpper().Contains("SOLD LAST")
-            || sentence.ToUpper().Contains("DON'T"))
+        if (sentence.ToUpper().Contains("DO NOT"))
         {
             goodMood = false;
         }
