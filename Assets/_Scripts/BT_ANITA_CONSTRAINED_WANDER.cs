@@ -1,8 +1,8 @@
 using UnityEngine;
 using BTs;
 
-[CreateAssetMenu(fileName = "BT_ANITA", menuName = "Behaviour Trees/BT_ANITA", order = 1)]
-public class BT_ANITA : BehaviourTree
+[CreateAssetMenu(fileName = "BT_ANITA_CONSTRAINED_WANDER", menuName = "Behaviour Trees/BT_ANITA_CONSTRAINED_WANDER", order = 1)]
+public class BT_ANITA_CONSTRAINED_WANDER : BehaviourTree
 {
     /* If necessary declare BT parameters here. 
        All public parameters must be of type string. All public parameters must be
@@ -24,7 +24,7 @@ public class BT_ANITA : BehaviourTree
      */
 
      // construtor
-    public BT_ANITA()  { 
+    public BT_ANITA_CONSTRAINED_WANDER()  { 
         /* Receive BT parameters and set them. Remember all are of type string */
     }
     
@@ -39,27 +39,17 @@ public class BT_ANITA : BehaviourTree
 
           A behaviour tree can use other behaviour trees.  
       */
+        DynamicSelector m_DS_WanderAround = new DynamicSelector();
 
-        DynamicSelector m_DS =new DynamicSelector();
-
-        m_DS.AddChild(
-            new CONDITION_CustomerInStore(),
-            new Sequence(
-                new ACTION_Deactivate("theBroom"),
-                new ACTION_Deactivate("theNotes"),
-                new ACTION_Utter("10"),
-                new ACTION_Arrive("theFrontOfDesk"),
-                CreateInstance<BT_ANITA_SEE_TO_CUSTOMER>()
-                )
+        m_DS_WanderAround.AddChild(
+            new CONDITION_FeelUnsafe("attractor", "safeRadius", "extraSafeRadius"),
+            new ACTION_WanderAround("attractor", "highSW")
             );
-
-        m_DS.AddChild(
+        m_DS_WanderAround.AddChild(
             new CONDITION_AlwaysTrue(),
-            CreateInstance<BT_ANITA_SWEEP_AND_SING>()
+            new ACTION_WanderAround("attractor", "lowSW")
             );
 
-
-
-        root = m_DS;
+        root = m_DS_WanderAround;
     }
 }

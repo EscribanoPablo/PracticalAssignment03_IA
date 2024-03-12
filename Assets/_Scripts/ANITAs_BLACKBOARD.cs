@@ -13,6 +13,8 @@ public class ANITAs_BLACKBOARD : DynamicBlackboard, IDialogSystem
 
     public float safeRadius = 60;
     public float extraSafeRadius = 30;
+    public float lowSW = .2f;
+    public float highSW= .8f;
 
     private TextMeshPro utteranceLine;
     private GameObject utteranceBubble;

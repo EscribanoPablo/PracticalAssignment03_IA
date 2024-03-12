@@ -1,8 +1,8 @@
 using UnityEngine;
 using BTs;
 
-[CreateAssetMenu(fileName = "BT_ANITA", menuName = "Behaviour Trees/BT_ANITA", order = 1)]
-public class BT_ANITA : BehaviourTree
+[CreateAssetMenu(fileName = "BT_ANITA_SEE_TO_CUSTOMER", menuName = "Behaviour Trees/BT_ANITA_SEE_TO_CUSTOMER", order = 1)]
+public class BT_ANITA_SEE_TO_CUSTOMER : BehaviourTree
 {
     /* If necessary declare BT parameters here. 
        All public parameters must be of type string. All public parameters must be
@@ -24,7 +24,7 @@ public class BT_ANITA : BehaviourTree
      */
 
      // construtor
-    public BT_ANITA()  { 
+    public BT_ANITA_SEE_TO_CUSTOMER()  { 
         /* Receive BT parameters and set them. Remember all are of type string */
     }
     
@@ -39,27 +39,19 @@ public class BT_ANITA : BehaviourTree
 
           A behaviour tree can use other behaviour trees.  
       */
-
-        DynamicSelector m_DS =new DynamicSelector();
-
-        m_DS.AddChild(
-            new CONDITION_CustomerInStore(),
-            new Sequence(
-                new ACTION_Deactivate("theBroom"),
-                new ACTION_Deactivate("theNotes"),
-                new ACTION_Utter("10"),
-                new ACTION_Arrive("theFrontOfDesk"),
-                CreateInstance<BT_ANITA_SEE_TO_CUSTOMER>()
-                )
+        Sequence AnitaSeeToCustomer = new Sequence(
+            new ACTION_EngageInDialog("partner"),
+            new ACTION_AskEngaged("11","2","rs"),
+            new Selector(
+                new Sequence(
+                    new ACTION_ParseAnswer( "?","??"),
+                    new ACTION_Utter("13"),
+                    CreateInstance<BT_SELL_PRODUCT>()
+                    ),
+                new ACTION_Utter("12")),
+            new ACTION_DisengageFromDialog()
             );
 
-        m_DS.AddChild(
-            new CONDITION_AlwaysTrue(),
-            CreateInstance<BT_ANITA_SWEEP_AND_SING>()
-            );
-
-
-
-        root = m_DS;
+        root = AnitaSeeToCustomer;
     }
 }

@@ -39,10 +39,19 @@ public class BT_ANITA_SWEEP_AND_SING : BehaviourTree
 
           A behaviour tree can use other behaviour trees.  
       */
+        
+
         Sequence m_SweepAndSing = new Sequence(
-            new CONDITION_AlwaysTrue(),
-            new ACTION_ClearUtterance()
-            //new ACTION_Activate()
-            );
+            new ACTION_ClearUtterance(),
+            new ACTION_Activate("theBroom"),
+            new ACTION_Activate("theNotes"),
+            CreateInstance<BT_ANITA_CONSTRAINED_WANDER>()
+            ) ;
+
+        
+        
+
+
+        root = m_SweepAndSing;
     }
 }

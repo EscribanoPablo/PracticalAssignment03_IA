@@ -1,8 +1,8 @@
 using UnityEngine;
 using BTs;
 
-[CreateAssetMenu(fileName = "BT_ANITA", menuName = "Behaviour Trees/BT_ANITA", order = 1)]
-public class BT_ANITA : BehaviourTree
+[CreateAssetMenu(fileName = "BT_SELL_PRODUCT", menuName = "Behaviour Trees/BT_SELL_PRODUCT", order = 1)]
+public class BT_SELL_PRODUCT : BehaviourTree
 {
     /* If necessary declare BT parameters here. 
        All public parameters must be of type string. All public parameters must be
@@ -24,7 +24,7 @@ public class BT_ANITA : BehaviourTree
      */
 
      // construtor
-    public BT_ANITA()  { 
+    public BT_SELL_PRODUCT()  { 
         /* Receive BT parameters and set them. Remember all are of type string */
     }
     
@@ -39,27 +39,13 @@ public class BT_ANITA : BehaviourTree
 
           A behaviour tree can use other behaviour trees.  
       */
-
-        DynamicSelector m_DS =new DynamicSelector();
-
-        m_DS.AddChild(
-            new CONDITION_CustomerInStore(),
+        root = new Selector(
             new Sequence(
-                new ACTION_Deactivate("theBroom"),
-                new ACTION_Deactivate("theNotes"),
-                new ACTION_Utter("10"),
-                new ACTION_Arrive("theFrontOfDesk"),
-                CreateInstance<BT_ANITA_SEE_TO_CUSTOMER>()
-                )
+                new CONDITION_CheckExistences("item"),
+                new ACTION_Sell("item"),
+                new ACTION_Utter("14")
+                ),
+            new ACTION_Utter("12")
             );
-
-        m_DS.AddChild(
-            new CONDITION_AlwaysTrue(),
-            CreateInstance<BT_ANITA_SWEEP_AND_SING>()
-            );
-
-
-
-        root = m_DS;
     }
 }
