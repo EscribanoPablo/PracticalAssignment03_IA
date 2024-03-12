@@ -66,7 +66,10 @@ public class ROBBER_BLACKBOARD : DynamicBlackboard, IDialogSystem
 
             Debug.Log(sentence);
         // senteces with negative words affect the mood of the agent...
-        if (sentence.ToUpper().Contains("DO NOT"))
+        if (sentence.ToUpper().Contains("DO NOT")
+          ||sentence.ToUpper().Contains("NOT")
+          || sentence.ToUpper().Contains("NONE")
+          || sentence.ToUpper().Contains("SOLD"))
         {
             goodMood = false;
         }
