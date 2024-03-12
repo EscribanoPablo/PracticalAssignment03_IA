@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class ANITAs_BLACKBOARD : DynamicBlackboard, IDialogSystem
@@ -16,10 +17,13 @@ public class ANITAs_BLACKBOARD : DynamicBlackboard, IDialogSystem
     public float lowSW = .2f;
     public float highSW= .8f;
 
+    public List<int> m_NegativeUtterancesIndex;
+
     private TextMeshPro utteranceLine;
     private GameObject utteranceBubble;
     private TextMesh peachLine, appleLine;
     private IDialogSystem partner;
+
 
     public string[] utterances =
     {
@@ -32,7 +36,7 @@ public class ANITAs_BLACKBOARD : DynamicBlackboard, IDialogSystem
         "unused utterance",//6
         "unused utterance",
         "unused utterance",//8
-        "unused utterance",//9
+        "Not a single one left,sorry!",//9
         "It seems there's a customer",
         "How can I help you dear customer?",//11
         "Oh, I'm sorry we do not sell that", // 12
@@ -41,6 +45,24 @@ public class ANITAs_BLACKBOARD : DynamicBlackboard, IDialogSystem
         "What a pity!!! None left!",
         "Waiting for a customer..." // 16
     };
+    public List<string> m_NegativeUtterances;
+    void NegativeUtterances()
+    {
+        m_NegativeUtterances.Clear();
+
+        foreach (int index in m_NegativeUtterancesIndex)
+        {
+            if (index >= 0 && index < utterances.Length)
+            {
+                m_NegativeUtterances.Add(utterances[index]);
+                //Debug.Log("Added to negative utterances: "+utterances[index]);
+            }
+            else
+            {
+                Debug.LogError("Index out of range: " + index);
+            }
+        }
+    }
 
     private void OnDrawGizmos()
     {
@@ -58,7 +80,7 @@ public class ANITAs_BLACKBOARD : DynamicBlackboard, IDialogSystem
         utteranceLine = utteranceBubble.transform.GetChild(0).GetComponent<TextMeshPro>();
         peachLine = GameObject.Find("PEACH").transform.GetChild(0).GetComponent<TextMesh>();
         appleLine = GameObject.Find("APPLE").transform.GetChild(0).GetComponent<TextMesh>();
-
+        NegativeUtterances();
         peachLine.text = "x " + peaches;
         appleLine.text = "x " + apples;
     }

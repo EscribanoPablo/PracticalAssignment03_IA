@@ -783,6 +783,8 @@ MonoBehaviour:
   extraSafeRadius: 30
   lowSW: 0.2
   highSW: 0.8
+  m_NegativeUtterancesIndex: 0f000000090000000800000007000000
+  m_NegativeUtterances: []
   utterances:
   - unused utterance
   - unused utterance
@@ -791,9 +793,9 @@ MonoBehaviour:
   - unused utterance
   - unused utterance
   - unused utterance
-  - unused utterance
-  - unused utterance
-  - unused utterance
+  - I sold last one a minute ago
+  - Sorry, none left
+  - 'Not a single one left, sorry '
   - It seems there's a customer
   - How can I help you dear customer?
   - Oh, I'm sorry we do not sell that
@@ -1369,7 +1371,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1776454759
 Transform:
   m_ObjectHideFlags: 0

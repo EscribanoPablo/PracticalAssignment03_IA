@@ -67,6 +67,8 @@ public class CUSTOMER_BLACKBOARD : DynamicBlackboard, IDialogSystem
         if (sentence.ToUpper().Contains("NO")
             || sentence.ToUpper().Contains("NONE")
             || sentence.ToUpper().Contains("DO NOT")
+            || sentence.ToUpper().Contains("NOT")
+            || sentence.ToUpper().Contains("SOLD LAST")
             || sentence.ToUpper().Contains("DON'T"))
         {
             goodMood = false;
