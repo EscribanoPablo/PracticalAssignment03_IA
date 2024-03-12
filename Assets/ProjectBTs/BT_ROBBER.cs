@@ -36,6 +36,7 @@ public class BT_ROBBER : BehaviourTree
             )
         );
 
+       
         root = new Sequence(child1, child2, child3, child4, child5, child6);
     }
 }

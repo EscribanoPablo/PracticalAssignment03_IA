@@ -63,6 +63,8 @@ public class ROBBER_BLACKBOARD : DynamicBlackboard, IDialogSystem
 
     public void BeTold(string sentence)
     {
+
+            Debug.Log(sentence);
         // senteces with negative words affect the mood of the agent...
         if (sentence.ToUpper().Contains("DO NOT"))
         {
