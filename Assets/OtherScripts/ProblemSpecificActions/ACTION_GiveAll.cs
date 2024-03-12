@@ -1,11 +1,10 @@
-using UnityEngine;
-using BTs;
+﻿using BTs;
 
-public class ACTION_Sell : Action
+public class ACTION_GiveAll : Action
 {
     public string keyItem;
 
-    public ACTION_Sell(string keyItem)
+    public ACTION_GiveAll(string keyItem)
     {
         this.keyItem = keyItem;
     }
@@ -21,7 +20,7 @@ public class ACTION_Sell : Action
 
     public override Status OnTick()
     {
-        if (bl.Sell(item)) return Status.SUCCEEDED;
+        if (bl.GiveAll(item)) return Status.SUCCEEDED;
         else return Status.FAILED;
 
     }

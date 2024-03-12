@@ -45,6 +45,20 @@ public class BT_ANITA : BehaviourTree
         DynamicSelector m_DS =new DynamicSelector();
 
         m_DS.AddChild(
+            new CONDITION_RobberInStore("robber"),
+            new Sequence(
+                new ACTION_Deactivate("theBroom"),
+                new ACTION_Deactivate("theNotes"),
+                new ACTION_Activate("theScaredFace"),
+                new ACTION_Arrive("theFrontOfDesk"),
+                new ACTION_Utter("0"),
+                new ACTION_Arrive("theFrontOfDesk"),
+                CreateInstance<BT_ANITA_SEE_TO_ROBBER>()
+
+                )
+            );
+
+        m_DS.AddChild(
             new CONDITION_CustomerInStore("customer"),
             new Sequence(
                 new ACTION_Deactivate("theBroom"),
@@ -59,7 +73,7 @@ public class BT_ANITA : BehaviourTree
             new CONDITION_AlwaysTrue(),
             CreateInstance<BT_ANITA_SWEEP_AND_SING>()
             );
-
+        
         RepeatForeverDecorator m_RFD = new RepeatForeverDecorator();
 
         m_RFD.AddChild(m_DS);

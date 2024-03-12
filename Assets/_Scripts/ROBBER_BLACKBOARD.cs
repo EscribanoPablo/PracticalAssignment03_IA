@@ -2,7 +2,7 @@
 using TMPro;
 using UnityEngine;
 
-public class CUSTOMER_BLACKBOARD : DynamicBlackboard, IDialogSystem
+public class ROBBER_BLACKBOARD : DynamicBlackboard, IDialogSystem
 {
 
     private TextMeshPro utteranceLine;
@@ -10,21 +10,21 @@ public class CUSTOMER_BLACKBOARD : DynamicBlackboard, IDialogSystem
     public IDialogSystem partner = null;
     public GameObject storeEntrance;
     public GameObject exitPoint;
-    public GameObject shoppingBag;
+    public GameObject trashBag;
     public bool goodMood = true;
 
     public string[] utterances =
     {
-        "Hello...", //0
-        "An apple, please",//1
-        "A peach, please", //2
-        "Some grapes, please", //3
-        "Thank you. Goodbye", // 4
-        "Now let me go home...",
-        "...and eat this fantastic fruit",//6
-        "sh*t! No fruit today",
-        "I'll go for a greasy burger",//8
-        "Let me go buy some tasty fruit..."
+        "THERES NO ONE WORKING HERE??", //0
+        "GIVE ME ALL YOUR APPLES",//1
+        "GIVE ME ALL YOUR PEACHES", //2
+        "GIVE ME ALL THE BEERS YOU HAVE", //3
+        "I HAVE TO GO FAST", // 4
+        "Now let me escape the police...",
+        "...and eat this f*cking fruit!",//6
+        "SH*T! YOU DON'T HACE THAT?!",
+        "It was a joke! Don't call the police please...",//8
+        "THIS IS A ROBEBRY!!!"
     };
 
 
@@ -35,7 +35,7 @@ public class CUSTOMER_BLACKBOARD : DynamicBlackboard, IDialogSystem
         gameObject.AddComponent<DieNear>();
         storeEntrance = GameObject.Find("storeEntrance");
         exitPoint = GameObject.Find("exitPoint");
-        shoppingBag = transform.Find("BAG").gameObject;
+        trashBag = transform.Find("BAG").gameObject;
 
         GetComponent<DieNear>().cemetery = exitPoint;
     }

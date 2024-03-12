@@ -8,6 +8,7 @@ public class ANITAs_BLACKBOARD : DynamicBlackboard, IDialogSystem
     public int apples = 1;
     public GameObject theBroom;
     public GameObject theNotes;
+    public GameObject theScaredFace;
     public GameObject theSweepingPoint;
     public GameObject theStoreEntrance;
     public GameObject theFrontOfDesk;
@@ -27,11 +28,11 @@ public class ANITAs_BLACKBOARD : DynamicBlackboard, IDialogSystem
 
     public string[] utterances =
     {
-        "unused utterance", // 0
-        "unused utterance",
-        "unused utterance",  // 2
-        "unused utterance", // 3
-        "unused utterance",
+        "Oh no! A thief!", // 0
+        "Don't hurt me! What do you want?!",
+        "I'm giving it to you okay? Just wait a second!",  // 2
+        "I don't have what you are looking for! Leave me alone!", // 3
+        "Here you go! Now please leave my store!",
         "unused utterance",//5
         "unused utterance",//6
         "unused utterance",
@@ -100,6 +101,17 @@ public class ANITAs_BLACKBOARD : DynamicBlackboard, IDialogSystem
         {
             case "APPLE": apples--; appleLine.text = "x " + apples; return true;
             case "PEACH": peaches--; peachLine.text = "x " + peaches; return true;
+            default: return false;
+        }
+    }
+    public bool GiveAll(string item)
+    {
+        if (!CheckExistences(item)) return false;
+
+        switch (item)
+        {
+            case "APPLE": apples=0; appleLine.text = "x " + apples; return true;
+            case "PEACH": peaches=0; peachLine.text = "x " + peaches; return true;
             default: return false;
         }
     }

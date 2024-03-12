@@ -1,8 +1,8 @@
-using UnityEngine;
+﻿using UnityEngine;
 using BTs;
 
-[CreateAssetMenu(fileName = "BT_CUSTOMER", menuName = "Behaviour Trees/BT_CUSTOMER", order = 1)]
-public class BT_CUSTOMER : BehaviourTree
+[CreateAssetMenu(fileName = "BT_ROBBER", menuName = "Behaviour Trees/BT_ROBBER", order = 1)]
+public class BT_ROBBER : BehaviourTree
 {
 
     public override void OnConstruction()
@@ -25,7 +25,7 @@ public class BT_CUSTOMER : BehaviourTree
             new Selector(
                 new Sequence(
                     new LambdaCondition(() => { return gameObject.GetComponent<CUSTOMER_BLACKBOARD>().goodMood; }),
-                    new ACTION_Activate("shoppingBag"),
+                    new ACTION_Activate("trashBag"),
                     new ACTION_Utter("5", "2"),
                     new ACTION_Utter("6", "2")
                 ),

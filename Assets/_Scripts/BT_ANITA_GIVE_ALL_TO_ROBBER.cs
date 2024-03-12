@@ -1,8 +1,8 @@
-using UnityEngine;
+﻿using UnityEngine;
 using BTs;
 
-[CreateAssetMenu(fileName = "BT_SELL_PRODUCT", menuName = "Behaviour Trees/BT_SELL_PRODUCT", order = 1)]
-public class BT_SELL_PRODUCT : BehaviourTree
+[CreateAssetMenu(fileName = "BT_ANITA_GIVE_ALL_TO_ROBBER", menuName = "Behaviour Trees/BT_ANITA_GIVE_ALL_TO_ROBBER", order = 1)]
+public class BT_ANITA_GIVE_ALL_TO_ROBBER : BehaviourTree
 {
     /* If necessary declare BT parameters here. 
        All public parameters must be of type string. All public parameters must be
@@ -25,7 +25,7 @@ public class BT_SELL_PRODUCT : BehaviourTree
 
     // construtor
     ANITAs_BLACKBOARD m_ANITAs_BLACKBOARD;
-    public BT_SELL_PRODUCT()
+    public BT_ANITA_GIVE_ALL_TO_ROBBER()
     {
         /* Receive BT parameters and set them. Remember all are of type string */
     }
@@ -78,8 +78,8 @@ public class BT_SELL_PRODUCT : BehaviourTree
         root = new Selector(
             new Sequence(
                 new CONDITION_CheckExistences("item"),
-                new ACTION_Sell("item"),
-                new ACTION_TellEngaged("14", "2")
+                new ACTION_GiveAll("item"),
+                new ACTION_TellEngaged("4", "2")
                 ),
             new ACTION_TellEngaged(ChooseRandomNegativeUtteranceIndex(), "2")
             );
